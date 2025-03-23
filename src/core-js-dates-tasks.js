@@ -77,8 +77,15 @@ function getDayName(date) {
  * Date('2024-02-13T00:00:00Z') => Date('2024-02-16T00:00:00Z')
  * Date('2024-02-16T00:00:00Z') => Date('2024-02-23T00:00:00Z')
  */
-function getNextFriday(/* date */) {
-  throw new Error('Not implemented');
+function getNextFriday(date) {
+  const oneDayMilliseconds = 86400000;
+  let dateMilliseconds = Date.parse(date) + oneDayMilliseconds;
+  while (new Date(dateMilliseconds).getDay() !== 5) {
+    dateMilliseconds += oneDayMilliseconds;
+  }
+  return new Date(
+    `${`${new Date(dateMilliseconds).toISOString()}`.slice(0, 19)}Z`
+  );
 }
 
 /**
