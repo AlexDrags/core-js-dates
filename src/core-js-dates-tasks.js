@@ -92,8 +92,35 @@ function getNextFriday(/* date */) {
  * 1, 2024 => 31
  * 2, 2024 => 29
  */
-function getCountDaysInMonth(/* month, year */) {
-  throw new Error('Not implemented');
+function getCountDaysInMonth(month, year) {
+  switch (month) {
+    case 1:
+      return 31;
+    case 3:
+      return 31;
+    case 5:
+      return 31;
+    case 7:
+      return 31;
+    case 8:
+      return 31;
+    case 10:
+      return 31;
+    case 12:
+      return 31;
+    case 4:
+      return 30;
+    case 6:
+      return 30;
+    case 9:
+      return 30;
+    case 11:
+      return 30;
+    default:
+      if (year % 4 === 0 && year % 100 !== 0) return 29;
+      if (year % 400 === 0) return 29;
+      return 28;
+  }
 }
 
 /**
